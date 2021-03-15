@@ -1,0 +1,69 @@
+<html><head>
+  <script src="anychart-base.min.js"></script>
+  <script src="anychart-ui.min.js"></script>
+  <script src="anychart-exports.min.js"></script>
+  <script src="dark_turquoise.min.js"></script>
+  <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+  <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+  <style type="text/css">
+
+    html,
+    body,
+    #container {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  
+</style>
+</head>
+<body>
+  
+  <div id="container"></div>
+  
+
+  <script>
+
+    anychart.onDocumentReady(function () {
+	// set chart theme
+anychart.theme('darkTurquoise');
+      // create pie chart with passed data
+      var data = anychart.data.set([
+        ['Working on School Work', 69.2, 24.2],
+        ['Working at my job', 85, 334],
+        ['Recreational Activities', 32.1, 1045],
+        ['Self Care/Eatin/Sleeping', 8.2, 3038]
+      ]);
+
+      var wealth = data.mapAs({ x: 0, value: 1 });
+
+      var chart = anychart.pie(wealth);
+      chart
+        .labels()
+        .hAlign('center')
+        .position('outside')
+        .format('{%Value} trn.n({%PercentOfCategory}%)');
+
+      // set chart title text settings
+      chart.title('What I Spend my Time Doing');
+
+      // set legend title text settings
+      chart
+        .legend()
+        // set legend position and items layout
+        .position('center-bottom')
+        .itemsLayout('horizontal')
+        .align('center');
+
+      // set container id for the chart
+      chart.container('container');
+      // initiate chart drawing
+      chart.draw();
+    });
+  
+</script>
+
+
+                
+                </body></html>
